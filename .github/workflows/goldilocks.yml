@@ -37,7 +37,8 @@ jobs:
         repository: 'goldilocksgke'
     
     - name: Access cloned repo
-      run: goldilocksgke
+      run: |
+         cd goldilocksgke
          ls -la   
 
     - name: Deploy with Helm
@@ -47,4 +48,4 @@ jobs:
         gcloud components update
         gcloud container clusters get-credentials gke-project-426920-gke --region us-east5 --project gke-project-426920
         helm repo add fairwinds-stable https://charts.fairwinds.com/stable
-        helm install my-goldilocks fairwinds-stable/goldilocks -f values.yaml -n goldilocks 
+         helm install my-goldilocks fairwinds-stable/goldilocks -f values.yaml -n goldilocks
